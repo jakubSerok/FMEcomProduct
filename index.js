@@ -12,6 +12,12 @@ const closeBtn = document.querySelector(".close");
 const imgCheck = document.querySelector(".imgCheck");
 const bigImg = document.querySelector("#largeImg");
 
+
+//check
+const addBtn = document.querySelector(".cartButton");
+const deleteBtn = document.querySelector("#delete");
+
+
 plusBtn.addEventListener("click",function(){    
     itValue++;
     itemValue.innerText = itValue;
@@ -35,6 +41,19 @@ navCartBtn.addEventListener("click",function(){
     navCartCointainer.classList.toggle("hidden");
 })
 
+addBtn.addEventListener("click",function(){
+    if(itValue>0){
+        document.querySelector(".emptyBox").style.display ="none";
+        document.querySelector("#fValue").innerText = itValue;
+        document.querySelector("#fPrice").innerText = "$ "+(itValue*125).toFixed(2);
+        document.querySelector(".fullBox").style.display ="flex";
+    }
+})
+
+deleteBtn.addEventListener("click",function(){
+    document.querySelector(".emptyBox").style.display ="flex";
+    document.querySelector(".fullBox").style.display ="none";
+})
 function myGallery(img){
     var thumbnails = document.querySelectorAll('.thumb ul li img');
     thumbnails.forEach(thumb => thumb.classList.remove('active'));
