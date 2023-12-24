@@ -9,9 +9,11 @@ let itValue = 0;
 
 //big
 const closeBtn = document.querySelector(".close");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".previous");
 const imgCheck = document.querySelector(".imgCheck");
 const bigImg = document.querySelector("#largeImg");
-
+let imgIndex =0;
 
 //check
 const addBtn = document.querySelector(".cartButton");
@@ -53,6 +55,27 @@ addBtn.addEventListener("click",function(){
 deleteBtn.addEventListener("click",function(){
     document.querySelector(".emptyBox").style.display ="flex";
     document.querySelector(".fullBox").style.display ="none";
+})
+
+nextBtn.addEventListener("click",function(){
+    imgIndex++;
+    if(imgIndex>4){
+        imgIndex=0;
+    }
+    var thumbnails = document.querySelectorAll('.thumbBig ul li img');
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    document.getElementById("largeImgBig").src = thumbnails[imgIndex].src;
+    thumbnails[imgIndex].classList.add('active');
+})
+prevBtn.addEventListener("click",function(){
+    imgIndex--;
+    if(imgIndex<0){
+        imgIndex=4;
+    }
+    var thumbnails = document.querySelectorAll('.thumbBig ul li img');
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    document.getElementById("largeImgBig").src = thumbnails[imgIndex].src;
+    thumbnails[imgIndex].classList.add('active');
 })
 function myGallery(img){
     var thumbnails = document.querySelectorAll('.thumb ul li img');
