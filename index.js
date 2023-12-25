@@ -1,5 +1,6 @@
 const navCartBtn = document.querySelector(".navCart");
 const navCartCointainer = document.querySelector(".cartCointainer");
+const mq = window.matchMedia( "(min-width: 378px)" );
 
 //price
 const plusBtn = document.querySelector(".plusButton");
@@ -20,6 +21,11 @@ const addBtn = document.querySelector(".cartButton");
 const deleteBtn = document.querySelector("#delete");
 
 
+//mobile
+const mobileOpen = document.querySelector("#menu");
+const mobileMenu = document.querySelector(".mobileMenu");
+const mobileClose = document.querySelector("#closeMobile");
+
 plusBtn.addEventListener("click",function(){    
     itValue++;
     itemValue.innerText = itValue;
@@ -35,14 +41,22 @@ minusBtn.addEventListener("click",function(){
 closeBtn.addEventListener("click",function(){
     imgCheck.style.display = "none";
 })
-bigImg.addEventListener("click",function(){
-    imgCheck.style.display = "flex";
-})
+if(mq.matches){
+    bigImg.addEventListener("click",function(){
+        imgCheck.style.display = "flex";
+    })
+}
 
 navCartBtn.addEventListener("click",function(){
     navCartCointainer.classList.toggle("hidden");
 })
-
+//mobile
+mobileOpen.addEventListener("click",function(){
+    mobileMenu.style.display = "flex";
+})
+mobileClose.addEventListener("click",function(){
+    mobileMenu.style.display = "none";
+})
 addBtn.addEventListener("click",function(){
     if(itValue>0){
         document.querySelector(".emptyBox").style.display ="none";
